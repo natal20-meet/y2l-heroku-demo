@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Post</title>
+<!-- Navbar -->
+<style>
+
+
+body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff8fbf;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ffb9d7;
+}
+
+.active {
+  background-color: #ff73af;
+}
+</style>
+</head>
+<body style = "background-color: #bad5ff ">
+
+<ul>
+  <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('genModd') }}">your moodboard</a></li>
+  <li><a href="{{ url_for('tutorials') }}">tutorials</a></li>
+  <li><a href="{{ url_for('recent_posts') }}">posts</a></li>
+  <li><a href="{{ url_for('post') }}">Post your own</a></li>
+</ul>
+
+<!-- Navbar -->
+
+
+<br>
+<br>
+<br>
+<br>
+This is the part where you contribute and share your own art and stories 
+to make you posts, please place a category(ex:pn,sketch,pencil....)
+then copy the link address of the image location.
+lastly, describe it or write whatver story you would like, you could also keep that empty for the art to speak!
+ <form action="/post" method="POST">
+ 	Place the category here
+    <input type="text" name="category" placeholder = "category">
+    picture link address
+    <input type="text" name="Picture" placeholder = "Picture">
+    Description
+    <input type="text" name="description" placeholder = "description">
+ <input type="submit" value="Submit">
+</form>
+</body>
+</html>

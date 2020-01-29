@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recent Posts!</title>
+</head>
+
+<!-- Navbar -->
+<style>
+
+
+body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff8fbf;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ffb9d7;
+}
+
+.active {
+  background-color: #ff73af;
+}
+</style>
+
+<body style = "background-color: #bad5ff ">
+
+<ul>
+  <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('genModd') }}">your moodboard</a></li>
+  <li><a href="{{ url_for('tutorials') }}">tutorials</a></li>
+  <li><a href="{{ url_for('recent_posts') }}">posts</a></li>
+  <li><a href="{{ url_for('post') }}">Post your own</a></li>
+</ul>
+
+<!-- Navbar -->
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- creating category and filtering by it -->
+<form action="/recent_posts" method="POST">
+<select name="search">
+	{%for ss in posts%}
+	<option value="{{ss.category}}">{{ss.category}}</option>
+{%endfor%}
+</select>
+<input type="submit" name="submit" value="search">
+</form>
+
+<!-- showing posts from databases -->
+{%for post in posts%}
+<img src="{{post.picture}}" alt="picture" style="width:50%">
+  <p>{{post.category}}</p>
+  <p>{{post.Description}}</p>
+  <p><a href="/moodboard/{{post.ID}}"><button>Add to moodboard</button></a></p>	
+{%endfor%}
+
+<a href="{{url_for('genModd')}}"> click to view moodboard </a>
+<br>
+<br>
+<a href="{{url_for('post')}}"> click to add post </a>
+</body>
+</html>
